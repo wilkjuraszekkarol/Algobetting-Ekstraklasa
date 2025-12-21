@@ -12,7 +12,7 @@ def scraping(url):
     driver.maximize_window()
     driver.delete_all_cookies()
     driver.get(url)
-    id = "tablepress-249_wrapper" #Has to be changed by hand
+    id = "tablepress-249_wrapper" #Has to be changed by hand, for each season of course
     try:
         login_modal = WebDriverWait(driver, 60).until(
             EC.presence_of_element_located((By.ID, id)))
@@ -51,17 +51,17 @@ def parsing(megalista):
 
 if __name__ == '__main__':
     megalista = []
-    url = f"https://ekstrastats.pl/sezon-201617/#symple-tab-tabele-ligowe"
+    url = f"https://ekstrastats.pl/sezon-2023-24/#symple-tab-tabele-ligowe" #Change for each season
     scraping(url)
     megalista = [x for xs in megalista for x in xs]
     megalista = megalista[0][1:]
     print(megalista)
-    #tabela = parsing(megalista)
-    #print(megalista)
-    #df = pd.DataFrame(tabela, columns = ['Drużyna', 'Punkty', 'Zwycięstwa', 'Remisy', 'Porażki', 'Gole_zdobyte', 'Gole_stracone'])
-    #df.insert(1, 'Sezon', '17/18')
-    #df.to_csv('C:\\Users\Karol\\Desktop\\Projekty do CV\\Dane per sezon Ekstrastats\\Ekstrastats_1_17_18.csv', sep=',', encoding='utf-8-sig')
-    #print(df.to_string())
+    tabela = parsing(megalista)
+    print(tabela)
+    df = pd.DataFrame(tabela, columns = ['Drużyna', 'Punkty', 'Zwycięstwa', 'Remisy', 'Porażki', 'Gole_zdobyte', 'Gole_stracone'])
+    df.insert(1, 'Sezon', '23/24') #Change for each season
+    df.to_csv('C:\\Users\Karol\\Desktop\\Projekty do CV\\Dane per sezon Ekstrastats\\Ekstrastats_1_23_24.csv', sep=',', encoding='utf-8-sig') #Change for each season
+    print(df.to_string())
 
 
 
