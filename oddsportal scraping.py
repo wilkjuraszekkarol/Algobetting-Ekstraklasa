@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import pandas as pd
 
 def scraping(url, x, megalista):
-    service = Service(executable_path="C:\\Users\\Karol\\Desktop\\Algobetting\\projekty-i-w-ogóle\\Scraping i nie tylko\\chromedriver.exe")
+    service = Service(executable_path="PATH\\chromedriver.exe")
     driver = webdriver.Chrome(service=service)
     driver.maximize_window()
     driver.delete_all_cookies()
@@ -15,15 +15,15 @@ def scraping(url, x, megalista):
     css_selector = "div.eventRow.flex.w-full.flex-col.text-xs"
     try:
         login_modal = WebDriverWait(driver, 60).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, css_selector)))
+            EC.presence_of_element_located((By.CSS_SELECTOR, css_selector))) #Ensures that we wait exactly as long as we have to, no more no less
     finally:
-        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);") #Ensures that we actually load the entire site
     time.sleep(2)
     tabela = driver.find_elements(By.CSS_SELECTOR, css_selector)
 
     stringi = []
     list = []
-    if x[0] in (13, 14, 15, 16, 17, 18, 19):
+    if x[0] in (13, 14, 15, 16, 17, 18, 19): #Cleaning
         for mecz in tabela:
             stringi.append(mecz.text)
             stringi[-1] = stringi[-1].replace("1\nX\n2\nB","")
@@ -72,7 +72,7 @@ def scraping(url, x, megalista):
             else:
                 pass
 
-    list[0] = list[0][5:] #Czyści pierwszy wiersz z niepotrzebnych elementów
+    list[0] = list[0][5:] #Cleans the first row from unnecessary scraps
 
     for mecz in list:
         try:
@@ -85,7 +85,7 @@ def scraping(url, x, megalista):
         except ValueError:
             list.remove(mecz)
 
-    print(len(list)) #Sprawdza czy wszystko się wczytało. Wartość powinna wynosić 50 dla każdej strony oprócz ostatniej
+    print(len(list)) #Checks if everything actually loaded. Value should be exactly 50 for every page except the last one (for each season)
     megalista.append(list)
     driver.close()
     return tabela
@@ -113,16 +113,23 @@ def tworzenie_tabeli(x, megalista):
 
     df = pd.DataFrame(megalista, columns = ['Data', 'Godzina', 'Gospodarze', 'Gole_gospodarze', 'Gole_goście', 'Goście', 'Oddsy_gospodarze', 'Oddsy_remis', 'Oddsy_goście', 'Kto_wygrał'])
     df.insert(2, 'Sezon', f'{x[0]}/{x[0]+1}')
-    #df.to_csv(f'Sezon_{x}_{x+1}.csv', sep=',', encoding='utf-8-sig')
     print(df.to_string())
     return df
 
 
 if __name__ == '__main__':
     lista = [[12, 5], [13,6], [14,6], [15,6], [16,6], [17,6], [18,6], [19,6], [20,5], [21,7], [22,7], [23,7], [24,7]]
+    lista_dfow = []
     for i in lista:
         megalista = []
-        tworzenie_tabeli(i, megalista).to_csv(f'C:\\Users\\Karol\\Desktop\\Algobetting\\projekty-i-w-ogóle\\Scraping i nie tylko\\Dane per sezon TEST\\Sezon_{i[0]}_{i[0]+1}.csv', sep=',', encoding='utf-8-sig')
+        df = tworzenie_tabeli(i, megalista)
+        lista_dfow.append(df)
+    lista_dfow.reverse()
+    pelne_dane = lista_dfow[0]
+    for j in range(1, len(lista_dfow)):
+        pelne_dane = pd.concat([pelne_dane, lista_dfow[j]])
+    pelne_dane = pelne_dane.reset_index(drop=True)
+    pelne_dane.to_csv(f"PATH\\pelne_dane_oddsportal.csv", sep=',', encoding='utf-8-sig')
 
 
 
