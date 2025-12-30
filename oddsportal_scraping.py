@@ -138,7 +138,7 @@ if __name__ == '__main__':
     values = [[24,7], [23,7], [22,7], [21,7], [20,5], [19,6], [18,6], [17,6], [16,6], [15,6], [14,6], [13,6], [12,5]]
     full_data = creating_full_df(values)
     #print(full_data.to_string()) Uncomment if you only want to see how the spreadsheet presents itself
-    full_data.to_csv(f"PATH\\pelne_dane_oddsportal.csv", sep=',', encoding='utf-8-sig') #Set up a PATH if you want to save this dataframe on your device
+    full_data.to_csv(f"PATH\\full_data_oddsportal.csv", sep=',', encoding='utf-8-sig') #Set up a PATH if you want to save this dataframe on your device
 
 
 

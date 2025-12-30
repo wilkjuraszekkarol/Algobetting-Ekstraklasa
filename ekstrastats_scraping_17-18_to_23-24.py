@@ -67,7 +67,7 @@ if __name__ == '__main__':
     values = [[23,896], [22,818], [21,718], [20,629], [19,533], [18,441], [17,348]]
     full_data = creating_full_df(values)
     #print(full_data.to_string()) #Uncomment if you just want to see if code does what it's meant to do
-    full_data.to_csv(f"PATH\\17-18_23-24_dane_ekstrastats2.csv", sep=',', encoding='utf-8-sig') #Comment this line if you don't want to save any data
+    full_data.to_csv(f"PATH\\17-18_23-24_data_ekstrastats.csv", sep=',', encoding='utf-8-sig') #Comment this line if you don't want to save any data
 
 
 
