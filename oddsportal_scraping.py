@@ -6,8 +6,10 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import pandas as pd
 
+
+
 def scraping(url, x, megalist):
-    service = Service(executable_path="C:\\Users\\Karol\\Desktop\\Algobetting\\projekty-i-w-ogóle\\Scraping i nie tylko\\chromedriver.exe")
+    service = Service(executable_path="PATH\\chromedriver.exe") #Ensure that you have a working chromedriver and that its' PATH is correct
     driver = webdriver.Chrome(service=service)
     driver.maximize_window()
     driver.delete_all_cookies()
@@ -23,7 +25,7 @@ def scraping(url, x, megalist):
     #-------------
     strings = []
     list = []
-    if x[0] in (13, 14, 15, 16, 17, 18, 19): #Parsing
+    if x[0] in (13, 14, 15, 16, 17, 18, 19): #A lot of parsing
         for game in table:
             strings.append(game.text)
             strings[-1] = strings[-1].replace("1\nX\n2\nB","")
@@ -90,7 +92,9 @@ def scraping(url, x, megalist):
     driver.close()
     return table
 
-def creating_df(x, megalist):
+
+
+def creating_df(x, megalist): #Creates a dataframe for each season
     j = 1
     while j <= x[1]:
         if x[0] == 16:
@@ -116,7 +120,8 @@ def creating_df(x, megalist):
     print(df.to_string())
     return df
 
-def creating_full_df(list):
+
+def creating_full_df(list): #Merges all collected data into a single spreadsheet
     dfs = []
     for i in list:
         megalist = []
@@ -128,10 +133,12 @@ def creating_full_df(list):
     full_data = full_data.reset_index(drop=True)
     return full_data
 
+
 if __name__ == '__main__':
     values = [[24,7], [23,7], [22,7], [21,7], [20,5], [19,6], [18,6], [17,6], [16,6], [15,6], [14,6], [13,6], [12,5]]
     full_data = creating_full_df(values)
-    full_data.to_csv(f"C:\\Users\\Karol\\Desktop\\Algobetting-Ekstraklasa_OFFICIAL\\pelne_dane_oddsportal2.csv", sep=',', encoding='utf-8-sig')
+    #print(full_data.to_string()) Uncomment if you only want to see how the spreadsheet presents itself
+    full_data.to_csv(f"PATH\\pelne_dane_oddsportal.csv", sep=',', encoding='utf-8-sig') #Set up a PATH if you want to save this dataframe on your device
 
 
 
