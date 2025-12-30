@@ -2,27 +2,29 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 
+
 def scraping(x):
     url = f"https://ekstrastats.pl/sezon-20{x[0]}-{x[0]+1}/#symple-tab-tabele-ligowe"
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
-    tabela = soup.find('table', id=f'tablepress-{x[1]}')
-    return tabela
+    table = soup.find('table', id=f'tablepress-{x[1]}')
+    return table
 
-def parsing(x, tabela):
+
+def parsing(x, table): #Parses and creates a dataframe, for each season that is
     list = []
-    for mecz in tabela:
-        mecz = str(mecz)   
-        list.append(mecz)
+    for game in table:
+        game = str(game)   
+        list.append(game)
     list = list[2:]
     list = [y for y in list if y != '\n']
     try:
         list[-1] = list[-1].split("""<tr class="row-""")
     finally:
-        print(list)
+        pass
+        #print(list)
     list = [x for xs in list for x in xs]
     list = list[1:]
-    #print(len(list))
     for i in range(len(list)):
         list[i] = list[i][29:]
         for j in range(2,10):
@@ -45,18 +47,27 @@ def parsing(x, tabela):
     df.insert(1, 'Sezon', f"{x[0]}/{x[0]+1}")
     return df
 
+
+
+def creating_full_df(list): #Merges all collected data into a single spreadsheet
+    dfs = []
+    for x in list:
+        table = scraping(x)
+        df = parsing(x, table)
+        dfs.append(df)
+    full_data = dfs[0]
+    for j in range(1, len(dfs)):
+        full_data = pd.concat([full_data, dfs[j]])  
+    full_data = full_data.reset_index(drop=True)
+    return full_data
+
+
+
 if __name__ == '__main__':
-    lista_dfow = []
-    lista = [[23,896], [22,818], [21,718], [20,629], [19,533], [18,441], [17,348]]
-    for x in lista:
-        tabela = scraping(x)
-        df = parsing(x, tabela)
-        lista_dfow.append(df)
-    pelne_dane = lista_dfow[0]
-    for j in range(1, len(lista_dfow)):
-        pelne_dane = pd.concat([pelne_dane, lista_dfow[j]])  
-    pelne_dane = pelne_dane.reset_index(drop=True)
-    pelne_dane.to_csv(f"PATH\\17-18_23-24_dane_ekstrastats.csv", sep=',', encoding='utf-8-sig')
+    values = [[23,896], [22,818], [21,718], [20,629], [19,533], [18,441], [17,348]]
+    full_data = creating_full_df(values)
+    #print(full_data.to_string()) #Uncomment if you just want to see if code does what it's meant to do
+    full_data.to_csv(f"PATH\\17-18_23-24_dane_ekstrastats2.csv", sep=',', encoding='utf-8-sig') #Comment this line if you don't want to save any data
 
 
 
