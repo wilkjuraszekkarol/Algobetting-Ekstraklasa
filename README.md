@@ -23,5 +23,10 @@ oddsportal scraping.py samoczynnie scrapuje wszystko z tamtej strony. To znaczy,
 Podobnie z ekstrastats scraping.py, ale tam parsowanie wymaga zmian w kodzie w zależności od sezonu. Kod zawarty w tym repo zwraca jedną tabelę, ale bez sezonów 14/15, 15/16, i 16/17. Dane w data.zip zawierają jednak dane i z tych sezonów, tak samo one też są poddane analizie.
 
 
+Aha bardzo ważne: w pierwotnym projekcie użyłem Random Foresta i 18 zmiennych zamiast sześciu (wszystkie też z Ekstrastats), i wyszło mi kurwa 37% zwrotu xddddddd to co tu jest to dużo "głupszy" algorytm, bo tamten jest zbyt dobry aby go opublikować.
+
+Tutaj zrobiłem tak aby model był najbardziej tępy jak to tylko możliwe, a i tak mi wyszło dwadzieścia kilka procent zwrotu Xd
+
+
 
 yyy masturbancja
