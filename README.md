@@ -2,11 +2,11 @@
 tu wszystko trzeba będzie jeszcze przeredagować
 
 W tym projekcie:
-1.) Scrapuję dane z Ekstraklasy na oddsportal.org (historyczne dane bukmacherskie, sezony 12/13 - 24/25)
-2.) Scrapuję dane z Ekstraklasy na ekstrastats.pl (drużynowe dane z danych sezonów, sezony 14/15 - 23/24)
-3.) Procesuję dane z ekstrastats tak, aby można było je zmergować, dzielę je na gospodarze/goście, i łączę z danymi z oddsportala. Od razu je też normalizuję, tak aby można było je zastosować do dowolnego modelu
-4.) Dane z ekstrastats wkładam do drzewka decyzyjnego tak, aby z samego performance'u obu drużyn w poprzednim sezonie, i faktu że są gospodarzami/gośćmi w danym spotkaniu, spróbowało ono przewidzieć wynik spotkania. Jest to o tyle wygodna strategia, że nie wymaga aktualizacji danych na bieżąco - wystarczy to zrobić raz do roku, przed początkiem nwoego sezonu.
-5.) Wynik z drzewka decyzyjnego przekabacam przez historyczne oddsy i patrzę, co by się stało, gdyby ktoś faktycznie betował zgodnie z tym co model wypluje.
+\n 1.) Scrapuję dane z Ekstraklasy na oddsportal.org (historyczne dane bukmacherskie, sezony 12/13 - 24/25)
+\n 2.) Scrapuję dane z Ekstraklasy na ekstrastats.pl (drużynowe dane z danych sezonów, sezony 14/15 - 23/24)
+\n 3.) Procesuję dane z ekstrastats tak, aby można było je zmergować, dzielę je na gospodarze/goście, i łączę z danymi z oddsportala. Od razu je też normalizuję, tak aby można było je zastosować do dowolnego modelu
+\n 4.) Dane z ekstrastats wkładam do drzewka decyzyjnego tak, aby z samego performance'u obu drużyn w poprzednim sezonie, i faktu że są gospodarzami/gośćmi w danym spotkaniu, spróbowało ono przewidzieć wynik spotkania. Jest to o tyle wygodna strategia, że nie wymaga aktualizacji danych na bieżąco - wystarczy to zrobić raz do roku, przed początkiem nwoego sezonu.
+\n 5.) Wynik z drzewka decyzyjnego przekabacam przez historyczne oddsy i patrzę, co by się stało, gdyby ktoś faktycznie betował zgodnie z tym co model wypluje.
 
 Wszystkie dane są w folderze data.zip, jeśli ktoś nie chce uruchamiać skryptów innych niż notebook z analizą, to wystarczy pobrać dane + notebooka.
 
