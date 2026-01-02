@@ -5,7 +5,7 @@
 ## What do I need to run it?
 - All you need is a working Google Chrome Driver (download here: https://developer.chrome.com/docs/chromedriver/downloads), and Python packages listed in requirements.txt.
 - If you just want to perform the analysis, download prepared CSV files from data.zip and analysis_DecisionTreeClassifier.ipynb.
-Before running any scripts on your device, make sure you set correctly up necessary PATHs (these are marked accordingly).
+Before running any scripts on your device, make sure you correctly set up necessary PATHs (these are marked accordingly with comments).
 - If you want to build necessary data, use oddsportal_scraping.py and ekstrastats_scraping_17-18_to_23-24.py, and then put both received CSVs into preprocessing.py. This ensures that we actually can merge these two tables.
 
 ## Info about scripts
