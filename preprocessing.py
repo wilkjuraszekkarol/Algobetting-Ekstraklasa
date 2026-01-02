@@ -79,11 +79,12 @@ if __name__ == '__main__':
     #However, it leaves us with NaN values for where a team did not play in the previous season. Let's change that.
     df = filling_nans(df1, df)
     #print(df.to_string())
-    df.to_csv("PATH\\merged_data.csv", encoding='utf-8-sig', index=True)
+    df.to_csv("PATH\\merged_data.csv", encoding='utf-8-sig', index=True) #----CHANGE PATH----
     max_scaled = df.copy()
     for column in list(max_scaled.columns)[11:]:
         max_scaled[column] = round(max_scaled[column] / max_scaled[column].max(), 3)
     #print(max_scaled.to_string())
-    max_scaled.to_csv("PATH\\merged_normalized.csv", encoding='utf-8-sig', index=True) #Some models require us to normalize our data, better to keep both copies
+    max_scaled.to_csv("PATH\\merged_normalized.csv", encoding='utf-8-sig', index=True) #----CHANGE PATH----
+    #Some models require us to normalize our data, better to keep both copies
 
 
