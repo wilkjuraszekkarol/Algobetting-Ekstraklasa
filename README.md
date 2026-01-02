@@ -22,7 +22,7 @@ Before running any scripts on your device, make sure you correctly set up necess
 
 ## Main takeaways
 - It's a stupidly simple algorithm (all variables it takes are: Points, Wins, Draws, Losses, Goals For, Goals Against, analyzed separately for hosts and guests), and yet it's profitable. Actually it's way more than just profitable.
-- Picking the most probable outcome is a horrible way to bet on games
+- Picking the most probable outcome is an insufficient way to bet on games, unless you enjoy losing money
 
 
 
