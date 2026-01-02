@@ -11,7 +11,7 @@ Before running any scripts on your device, make sure you correctly set up necess
 ## Info about scripts
 - If you want to get the data, oddsportal_scraping.py is a script that scrapes basically all historical odds of Ekstraklasa starting at season 11/12 all the way to 24/25. However, we will only be using data starting at season 15/16, since other data is only available since then.
 - Oddsportal.org is a dynamic page, so scraping it is a much more lengthy process - the script uses requests library, and it has exactly 80 pages to scrape, each one of them has to be loaded individually, so this script takes between 7 and 10 minutes to run. The upside is that it returns a single CSV file with all possible data.
-- Ekstrastats-Scraping_17-18_to_23-24.py is named accordingly because this script only scrapes afforementioned seasons. This is because older data has to be parsed differently, and I originally used selenium to scrape it, but it seems to no longer work, so I rewrote this script so that now it uses BeautifulSoup. I may enhance this script to also contain 14/15, 15/16, and 16/17 seasons.
+- Ekstrastats-Scraping_17-18_to_23-24.py is named accordingly because this script only scrapes afforementioned seasons. This is because older data has to be parsed differently, and I originally used selenium to scrape it, but I found it to be working very inconsistently, so I rewrote this script so that now it uses BeautifulSoup. I may enhance this script to also contain 14/15, 15/16, and 16/17 seasons.
 - AI usage is restricted to a few bugfixes, other than that nothing has been auto-generated
 
 ## TODO list in nearby future:
