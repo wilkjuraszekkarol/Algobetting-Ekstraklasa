@@ -15,7 +15,7 @@ Before running any scripts on your device, make sure you correctly set up necess
 - AI usage is restricted to a few bugfixes, other than that nothing has been auto-generated
 
 ## TODO list in nearby future:
-- Complete ekstrastats script so that it also includes other seasons
+- Complete ekstrastats scraping script so that it also includes other seasons
 - Try different ML models (publicly)
 - Publish an attempt to use this model to predict 25/26 outcomes (already done it with initial RandomForest, but it's not going public any time soon)
 - Some visualizations wouldn't hurt (probably)
