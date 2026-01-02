@@ -18,6 +18,7 @@ Before running any scripts on your device, make sure you set correctly up necess
 - Complete ekstrastats script so that it also includes other seasons
 - Try different ML models
 - Publish an attempt to use this model to predict 25/26 outcomes (already done it with initial RandomForest, but it's not going public any time soon)
+- Some visualizations wouldn't hurt (probably)
 
 ## Main takeaways
 - It's a stupidly simple algorithm (all variables it takes are: Points, Wins, Draws, Losses, Goals For, Goals Against, analyzed separately for hosts and guests), and yet it's profitable. Actually it's way more than just profitable.
