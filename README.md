@@ -1,4 +1,5 @@
 A short disclaimer: I might've said here or there that "this model actually works". Since then I've noticed an error which massively overestimated model's performance; this is NOT a profitable model. But it works in a way that if this were a zero-sum game, the best performing model would yield 1.05 ROB (Return on Bet). A 5% edge would certainly not be invaluable in, for example, stock market; it's just not enough to beat bookmaker margins.
+Besides, I'd have to be a little bit silly to just publish a functioning money-printer online.
 
 ## What is it?
 - A data analysis personal project that scrapes real-world data to find an optimal betting strategy for Ekstraklasa matches. It's a decision tree that uses each team's performance during previous season to give a probability score of each scenario (hosts winning, tie, guests winning), which combined with betting odds for each match gives us an option with the highest Expected Value (spoiler alert: this model performs way worse than just betting on the most probable scenario).
